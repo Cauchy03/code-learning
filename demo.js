@@ -1,35 +1,28 @@
-var search = function(nums, target) {
-  // 时间复杂度：O(logn)
-  // 空间复杂度：O(1)
-  //  nums = [6,7,8,1,2,3,4,5], target = 4
-  let start = 0;
-  let end = nums.length - 1;
-  while (start <= end) {
-    const mid = start + ((end - start) >> 1);
-    if (nums[mid] === target) return mid;
+var subarraySum = function (nums, k) {
+  let count = 0
+  let map = new Map()
+  // 保存当前位置的前缀和
+  let prevfixSum = 0
+  // 前缀和存储到map中
+  map.set(0, 1)
 
-    // [start, mid]有序
-    // ️⚠️注意这里的等号
-    if (nums[mid] >= nums[start]) {
-      //target 在 [start, mid] 之间
-      // 其实target不可能等于nums[mid]， 但是为了对称，我还是加上了等号
-      if (target >= nums[start] && target <= nums[mid]) {
-        end = mid - 1;
-      } else {
-        //target 不在 [start, mid] 之间
-        start = mid + 1;
-      }
-    } else {
-      // [mid, end]有序
-      // target 在 [mid, end] 之间
-      if (target >= nums[mid] && target <= nums[end]) {
-        start = mid + 1;
-      } else {
-        // target 不在 [mid, end] 之间
-        end = mid - 1;
-      }
+  for (let i = 0; i < nums.length; i++) {
+    prevfixSum += nums[i]
+    // 比较历史前缀和 如果存在count 直接加
+    if (map.has(prevfixSum - k)) {
+      count += map.get(prevfixSum - k)
     }
+
+    // 统计前缀和出现次数
+    if (map.has(prevfixSum)) {
+      map.set(prevfixSum, map.get(prevfixSum)++)
+    } else {
+      map.set(prevfixSum, 1)
+    }
+
   }
 
-  return -1;
+  return count
 }
+
+console.log(subarraySum([1,2,3,1,1],2))
