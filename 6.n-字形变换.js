@@ -1,3 +1,15 @@
+/*
+ * @lc app=leetcode.cn id=6 lang=javascript
+ *
+ * [6] N 字形变换
+ */
+
+// @lc code=start
+/**
+ * @param {string} s
+ * @param {number} numRows
+ * @return {string}
+ */
 var convert = function (string, numRows) {
   if (numRows == 1) return string
 
@@ -16,6 +28,5 @@ var convert = function (string, numRows) {
   // 拼接数组 
   return rows.join('');
 }
+// @lc code=end
 
-
-console.log(convert('abcdefghijk', 4))
