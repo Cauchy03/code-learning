@@ -1,3 +1,14 @@
+/*
+ * @lc app=leetcode.cn id=3 lang=javascript
+ *
+ * [3] 无重复字符的最长子串
+ */
+
+// @lc code=start
+/**
+ * @param {string} s
+ * @return {number}
+ */
 var lengthOfLongestSubstring = function (s) {
   let arr = []
   let max = 0
@@ -15,10 +26,11 @@ var lengthOfLongestSubstring = function (s) {
   return max
 }
 
-console.log(lengthOfLongestSubstring('abcabcbb'))
-
 // const str = 'hello';
 // str.charAt(1)  // 输出结果：e
 // str[1]         // 输出结果：e
 // str.charAt(5)  // 输出结果：''
 // str[5]         // 输出结果：undefined
+
+// @lc code=end
+
