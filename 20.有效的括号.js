@@ -24,7 +24,7 @@ var isValid = function (s) {
     }
   }
 
-  return stack.length === 0 // 不是对应的左括号，无法匹配
+  return stack.length === 0 // 栈不为空，则匹配失败 返回false
 }
 // @lc code=end
 
