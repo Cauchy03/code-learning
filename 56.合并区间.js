@@ -22,7 +22,7 @@ var merge = function (intervals) {
     // 判断有重叠情况
     if (prev[1] >= cur[0]) {
       prev[1] = Math.max(prev[1], cur[1])
-      // 这里不直接push 后续肯能还存在重叠情况
+      // 这里不直接push 后续可能还存在重叠情况
 
     } else { // 不重合情况 直接push res数组
       res.push(prev)
